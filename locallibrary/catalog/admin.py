@@ -24,9 +24,13 @@ class BookAdmin(admin.ModelAdmin):
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'date_of_birth', 'date_of_death')
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
 >>>>>>> Django Tutorial Part 4: Django admin site
+=======
+    list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
+>>>>>>> 025b0e9552b3301e2e28d69d28194f927fa0626a
     fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death')]
     inlines = [BooksInline]
 
@@ -34,9 +38,13 @@ class AuthorAdmin(admin.ModelAdmin):
 # admin.site.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     list_display = ('title', 'author', 'display_genre')
 >>>>>>> Django Tutorial Part 4: Django admin site
+=======
+    list_display = ('title', 'author', 'display_genre')
+>>>>>>> 025b0e9552b3301e2e28d69d28194f927fa0626a
     list_display = ('book', 'status', 'due_back', 'id')
     list_filter = ('status', 'due_back')
     fieldsets = (
@@ -53,7 +61,11 @@ admin.site.register(BookInstance, BookInstanceAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Genre) # Genre register
 <<<<<<< HEAD
+<<<<<<< HEAD
 admin.site.register(Language) # Language register
 =======
 admin.site.register(Language) # Language register
 >>>>>>> Django Tutorial Part 4: Django admin site
+=======
+admin.site.register(Language) # Language register
+>>>>>>> 025b0e9552b3301e2e28d69d28194f927fa0626a
