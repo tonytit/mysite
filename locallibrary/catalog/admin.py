@@ -23,12 +23,20 @@ class BookAdmin(admin.ModelAdmin):
 # admin.site.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'date_of_birth', 'date_of_death')
+<<<<<<< HEAD
+=======
+    list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
+>>>>>>> Django Tutorial Part 4: Django admin site
     fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death')]
     inlines = [BooksInline]
 
 
 # admin.site.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
+<<<<<<< HEAD
+=======
+    list_display = ('title', 'author', 'display_genre')
+>>>>>>> Django Tutorial Part 4: Django admin site
     list_display = ('book', 'status', 'due_back', 'id')
     list_filter = ('status', 'due_back')
     fieldsets = (
@@ -44,4 +52,8 @@ admin.site.register(Author, AuthorAdmin)
 admin.site.register(BookInstance, BookInstanceAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Genre) # Genre register
+<<<<<<< HEAD
 admin.site.register(Language) # Language register
+=======
+admin.site.register(Language) # Language register
+>>>>>>> Django Tutorial Part 4: Django admin site
