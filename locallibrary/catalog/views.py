@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from catalog.models import Book, Author, BookInstance, Genre
 from django.views import generic
 
@@ -28,19 +28,35 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get the context
-        context = super(BookListView, self).get_context_data(**kwargs)
-        # Create any data and add it to the context
-        context['some_data'] = 'This is just some data'
-        return context
+    context_object_name = 'book_list'   # your own name for the list as a template variable
 
+    def get_queryset(self):
+         return Book.objects.filter(title__icontains='')[:5] # Get 5 books containing the title war
 
-class BookDetailView(generic.ListView):
+    template_name = 'books/my_arbitrary_template_name_list.html'  # Specify your own template name/location
+    
+
+class BookDetailView(generic.DetailView):
     model = Book
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get the context
-        context = super(BookDetailView, self).get_context_data(**kwargs)
-        # Create any data and add it to the context
-        context['some_data'] = 'This is just some data'
-        return context
+
+    def book_detail_view(request, primary_key):
+        book = get_object_or_404(Book, pk=primary_key)
+        return render(request, 'catalog/book_detail.html', context={'book': book})
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+    context_object_name = 'author_list'   # your own name for the list as a template variable
+
+    def get_queryset(self):
+         return Author.objects.filter(first_name__icontains='')[:5] # Get 5 authors
+         
+    template_name = 'author/my_arbitrary_template_name_list.html'  # Specify your own template name/locatio
+
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+
+    def author_detail_view(request, primary_key):
+        author = get_object_or_404(Author, pk=primary_key)
+        return render(request, 'catalog/author_detail.html', context={'author': author})
