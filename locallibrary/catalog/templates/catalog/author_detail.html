@@ -2,12 +2,26 @@
 
 {% block content %}
   <h1> {{ author.last_name}} {{ author.first_name}}</h1>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  <p>{{ author.date_of_birth}} - {{ author.date_of_death}}</p>
+  <div style="margin-left:20px;margin-top:20px"></div> 
+    <h2>Book List</h2>
+    {% for book in author.book_set.all %}
+    <hr>
+=======
+>>>>>>> part_9
   <p>{{ author.date_of_birth}} {{ author.date_of_death}}</p> 
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Books</h4>
 
     {% for book in author.book_set.all %}
+<<<<<<< HEAD
+=======
+>>>>>>> 97430ec21ccd29fe76d645a78d8f0771e4266838
+>>>>>>> part_9
       {% if book_list %}
       <ul>
           <li>
@@ -15,8 +29,17 @@
           </li>
       </ul>
       {% else %}
+<<<<<<< HEAD
         <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> 
           <p>{{ book.summary }}</p>
+=======
+        <a href="{{ book.get_absolute_url }}"> {{ book.title }}</a>
+        <p><strong>Summary:</strong><a>  {{ book.summary }}</a> 
+        {% for copy in book.bookinstance_set.all %}
+          <p><strong>Imprint:</strong> {{ copy.imprint }}</p>
+          <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
+        {% endfor %}
+>>>>>>> part_9
       {% endif %}       
     {% endfor %}
   </div>
