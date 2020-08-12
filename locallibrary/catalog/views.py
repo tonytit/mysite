@@ -3,7 +3,10 @@ from django.views import generic
 
 # Create your views here.
 from catalog.models import Book, Author, BookInstance, Genre
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import permission_required
 
+# Create your views here.
 def index(request):
     """View function for home page of site."""
 
@@ -52,7 +55,6 @@ class BookDetailView(generic.DetailView):
         return render(request, 'catalog/book_detail.html', context={'book': book})
     
 
-
 class AuthorListView(generic.ListView):
     model = Author
     context_object_name = 'author_list'
@@ -70,4 +72,23 @@ class AuthorDetailView(generic.DetailView):
     def author_detail_view(request, primary_key):
         author = get_object_or_404(Author, pk=primary_key)
         return render(request, 'catalog/author_detail.html', context={'book': book})
-        
+
+
+class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
+    """Generic class-based view listing books on loan to current user."""
+    model = BookInstance
+    template_name ='catalog/bookinstance_list_borrowed_user.html'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
+
+
+class AllLoanedBooksListView (LoginRequiredMixin,generic.ListView):
+    """Generic class-based view listing books on loan to current user."""
+    model = BookInstance
+    template_name = 'catalog/bookinstance_list_borrowed_librarian.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return BookInstance.objects.filter(status__exact='o').order_by('due_back')
