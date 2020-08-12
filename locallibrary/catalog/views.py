@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import datetime
-=======
-from django.shortcuts import render, get_object_or_404
-from django.views import generic
->>>>>>> Django Tutorial Part 6: Generic list and detail views
 
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
@@ -63,10 +58,6 @@ class BookDetailView(generic.DetailView):
         return render(request, 'catalog/book_detail.html', context={'book': book})
     
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Django Tutorial Part 6: Generic list and detail views
 class AuthorListView(generic.ListView):
     model = Author
     context_object_name = 'author_list'
@@ -84,7 +75,6 @@ class AuthorDetailView(generic.DetailView):
     def author_detail_view(request, primary_key):
         author = get_object_or_404(Author, pk=primary_key)
         return render(request, 'catalog/author_detail.html', context={'book': book})
-<<<<<<< HEAD
 
 
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
@@ -167,6 +157,3 @@ class BookUpdate(UpdateView):
 class BookDelete(DeleteView):
     model = Book
     success_url = reverse_lazy('books')
-=======
-        
->>>>>>> Django Tutorial Part 6: Generic list and detail views
