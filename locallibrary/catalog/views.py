@@ -97,7 +97,6 @@ class AllLoanedBooksListView (LoginRequiredMixin,generic.ListView):
 
     def get_queryset(self):
         return BookInstance.objects.filter(status__exact='o').order_by('due_back')
-<<<<<<< HEAD
 
 
 @permission_required('catalog.can_mark_returned')
@@ -158,5 +157,3 @@ class BookDelete(DeleteView):
     model = Book
     success_url = reverse_lazy('books')
     
-=======
->>>>>>> a4355bdee850fcb952ac8a26b0af84b12446fdb7
