@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'irqp(a($fydwe!2%+j-0g()$8uf&i$
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['aqueous-wave-11278.herokuapp.com']
+ALLOWED_HOSTS = ['tonytit-mysite.herokuapp.com']
 
 
 # Application definition
