@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'irqp(a($fydwe!2%+j-0g()$8uf&i$qv*w7i3i82m$h3od7dr('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-ALLOWED_HOSTS = [https://hidden-reef-28150.herokuapp.com/]
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
